@@ -1,28 +1,26 @@
-const express = require('express');
+// Dependencies
 const path = require('path');
-const api = require ('./routes/index')
+const express = require('express');
 
+// Import express-handlebars
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
+
+
+// Sets up the Express App
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-const app = express();
+// Describe what the following two lines of code are doing.
+// The following two lines of code are setting Handlebars.js as the default template engine.
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(require('./controllers/dish-routes'));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+  
 
-app.use('/api', api)
-
-app.use(express.static('public'));
-
-
-
-app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
-app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/notes.html'))
-);
-
-app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT}`)
-);
+// Starts the server to begin listening
+app.listen(PORT, () => {
+    console.log('Server listening on: http://localhost:' + PORT);
+  });

@@ -11,8 +11,11 @@ const hbs = exphbs.create({});
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//Set up Routes
+const routes = require('./controllers');
 
-// Set up sequalize
+
+// Set up sequalize connection
 const sequelize = require('./config/connection');
 
 
@@ -24,7 +27,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./controllers/dish-routes'));
+app.use(routes);
 
   
 

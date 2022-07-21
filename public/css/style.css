@@ -25,19 +25,19 @@ header, .project:not(:last-child) {
 }
 
 
-.post-footer p{
+.postFooter p{
   font-weight: 100;
   font-size: 12px;
   border-bottom: 1px solid var(--light);
 }
 
-.display-view{
+.renderView {
 
   margin: 20px 0px 60px;
   
 }
 
-.display-view p{
+.renderView p{
   margin: 0px 0px 60px;
   
 }

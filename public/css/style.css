@@ -1,0 +1,50 @@
+:root {
+  --primary: #f5a25d;
+  --secondary: #fa7f72;
+  --light: #ebebeb;
+  --border-radius: 0.3rem;
+}
+
+header, .project:not(:last-child) {
+  border-bottom: 1px solid var(--light);
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--primary);
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+
+.post-footer p{
+  font-weight: 100;
+  font-size: 12px;
+  border-bottom: 1px solid var(--light);
+}
+
+.display-view{
+
+  margin: 20px 0px 60px;
+  
+}
+
+.display-view p{
+  margin: 0px 0px 60px;
+  
+}
+.title{
+  font-size: 24px;
+  color: var(--primary);
+}
+.welcome{
+  text-align: center;
+}

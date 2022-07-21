@@ -1,0 +1,26 @@
+  <h1 class="title">{{posts.title}}</h1>
+<div class="display-view" >
+  <p>{{posts.description}}</p>
+  <div class="post-footer"><p>Created by {{posts.user.name}} on {{format_date posts.date_created}}</p></div>
+          
+  {{#each posts.comments as |comments|}}
+    <div>
+        <p>{{comments.comment}}</p> 
+        <div class="post-footer"><p>Comment by {{comments.user.name}} on {{format_date comments.date_created}}</p></div> 
+    </div>
+  {{/each}}
+</div>
+
+
+ <form class="form new-comment-form" id="{{posts.id}}" >
+      <div class="form-group">
+        <label for="project-comment">Comment:</label>
+        <textarea class="form-input" id="project-comment" name="project-comment"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary add-button"  id="{{posts.id}}">Add Comment</button>
+      </div>
+</form>
+
+
+<script src="../js/comments.js"></script>

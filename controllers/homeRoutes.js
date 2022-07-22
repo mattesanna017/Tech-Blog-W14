@@ -39,8 +39,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/create_post', async (req, res) => {
-  res.render('create_post')
+router.get('/createPost', async (req, res) => {
+  res.render('createPost')
 });
 
 

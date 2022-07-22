@@ -9,7 +9,7 @@ header, .project:not(:last-child) {
   border-bottom: 1px solid var(--light);
 }
 
-.btn {
+.noBtn {
   background: none;
   border: none;
   padding: 0;
@@ -19,7 +19,7 @@ header, .project:not(:last-child) {
   font-size: 100%;
 }
 
-.btn:hover {
+.noBtn:hover {
   color: var(--secondary);
   text-decoration: underline;
 }

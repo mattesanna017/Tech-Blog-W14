@@ -4,7 +4,6 @@ const express = require('express');
 
 // Import express-handlebars
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({});
 
 
 // Sets up the Express App
@@ -17,6 +16,12 @@ const routes = require('./controllers');
 
 // Set up sequalize connection
 const sequelize = require('./config/connection');
+
+
+// Import the custom helper methods
+const helpers = require('./utils/helpers');
+// Incorporate the custom helper methods
+const hbs = exphbs.create({ helpers });
 
 
 // The following two lines of code are setting Handlebars.js as the default template engine.

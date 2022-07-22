@@ -12,7 +12,7 @@ Built a CMS-style blog site similar to a Wordpress site,  developers can publish
 - [Usage](#usage)
 - [Installation](#Installation)
 - [Screenshots-of-Deployment](#screenshots-of-Deployment)
-- [URLS] (#URLS)
+- [URLS](#URLS)
 
 
 

@@ -22,6 +22,15 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Connection Details 
+const mysql = require('mysql');
+const connection = mysql.createConnection( {
+  host: 'eu-cdbr-west-03.cleardb.net',
+  user: 'bece72ddb9df0f',
+  password: 'cb136536',
+  database : 'heroku_e61068493f801ce'
+})
+
 // Incorporate the custom helper methods
 const hbs = exphbs.create({ helpers });
 

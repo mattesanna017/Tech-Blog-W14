@@ -75,22 +75,23 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 - Insomnia
 
 ## Screenshots-of-Deployment
-### Homepage screen, Heroku App
-![alt text](./Assets/heroku%20app%20screen/homepage.PNG "homepage")
+### Homepage screen
+![alt text](./assets/homepage.PNG "homepage")
 
-### Login and Logout screen, Heroku App
-![alt text](./Assets/heroku%20app%20screen/notetaker%20write.PNG "Login and Logout")
+### Login(logout) and signUp screen
+![alt text](./assets/logs.PNG "Login and Logout")
 
-### Profile, Heroku App
-![alt text](./Assets/heroku%20app%20screen/notetakerSaved.PNG "Profile")
+### Own Profile
+![alt text](./assets/profile-dashoboard.PNG "Profile")
 
-### Post, Heroku App
-![alt text](./Assets/heroku%20app%20screen/delete%20function.PNG "Post")
+### Make a  Post
+![alt text](./assets/createPost.PNG"Post")
 
-
+### Make a Comment
+![alt text](./assets/comment.PNG "Comment")
 
 ## URLS
 ### GitHub repository
 https://github.com/mattesanna017/Tech-Blog-W14
 ### Heroku App 
-https://tech-blog-1422.herokuapp.com/
+https://my-tech-blog-w14.herokuapp.com/

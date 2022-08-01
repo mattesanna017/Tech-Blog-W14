@@ -4,7 +4,7 @@
     --tertiary: #33386b;
     --light-dark: #5943c6;
     --dark: #11119b;
-    --border-radius: 0.3rem;
+    --border-radius: 0.2rem;
   }
   
   * {
@@ -120,7 +120,6 @@
     padding: 3% 4%;
     background-color: var(--dark);
     color: var(--primary);
-    font-family: 'VT323', monospace;
   }
   
   .hero p {

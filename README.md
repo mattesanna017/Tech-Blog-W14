@@ -75,10 +75,10 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 - Insomnia
 
 ## Screenshots-of-Deployment
-### Homepage screen
+### Homepage 
 ![alt text](./assets/homepage.PNG "homepage")
 
-### Login(logout) and signUp screen
+### Login(logout) and signUp
 ![alt text](./assets/logs.PNG "Login and Logout")
 
 ### Own Profile

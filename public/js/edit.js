@@ -1,5 +1,4 @@
 const postId = document.querySelector('input[name="post-id"]').value;
-// console.log(postId); 
 
 const editFormHandler = async (event) => {
     event.preventDefault();
@@ -7,8 +6,7 @@ const editFormHandler = async (event) => {
     const post_title = document.querySelector('input[name="post-title"]').value;
     const post_body = document.querySelector('textarea[name="post-body"]').value;
 
-    // console.log(postTitle);
-    // console.log(postContent);
+
 
     const response = await fetch(`/api/post/${postId}`, {
         method: 'PUT',
@@ -20,7 +18,7 @@ const editFormHandler = async (event) => {
             'Content-Type': 'application/json'
         }
     });
-    // console.log(response);
+    
     if (response.ok) {
         document.location.replace('/dashboard');
     } else {

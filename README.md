@@ -1,129 +1,96 @@
-# Tech Blog App
-
-![License Badge](https://img.shields.io/badge/License-MIT-blue)
-
-Deployed Application: https://the-tech-blog-am.herokuapp.com/
-
-GitHub Repository: https://github.com/atmason90/tech-blog-app
-
-## Usage Instructions
-- Navigate to the deployed application: https://the-tech-blog-am.herokuapp.com/  
-- Click login to login or signup for an account
-- Click on posts to view or leave comments
-- Navigate to the dashboard page to view your posts or create new posts
-
-## Table of Contents
-
-- [Description](#description)
-- [Screenshot](#screenshot)
-- [Code Examples](#code-examples)
-- [Technologies Used](#technologies-used)
-- [Questions](#questions)
-- [License](#license)
+# Tech-Blog-W14
 
 ## Description
 
-The purpose of this project was to build a full stack application using the Model-View-Controller paradigm. This application uses a number of different technologies, including: Mysql, Express.js, mysql2 npm package, sequelize npm package, express-handlebars npm package, express-session npm package, connect-session-sequelize npm package, dotenv npm package, and bcrypt npm package.
+Writing about tech can be just as important as making it. Developers spend plenty of time creating new applications and debugging existing codebases, but most developers also spend at least some of their time reading and writing about technical concepts, recent advancements, and new technologies.
 
-The Tech Blog Application allows for creation of user accounts, login/logout functionality, viewing and commenting on blog posts, and a user dashboard where authored posts can be edited or deleted.
+Built a CMS-style blog site similar to a Wordpress site,  developers can publish their blog posts and comment on other developers’ posts as well. This site is completely built from scratch and deployed to Heroku. The app will follow the MVC paradigm in its architectural structure, using Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
-## Screenshot
 
-![Screen Shot 2022-05-09 at 7 01 19 PM](https://user-images.githubusercontent.com/99947655/167529565-0c6a8a18-615a-4f4b-b25c-b8c0aaeb6678.png)
+## Table of Contents
+- [User-Story](#user-story)
+- [Usage](#usage)
+- [Installation](#Installation)
+- [Screenshots-of-Deployment](#screenshots-of-Deployment)
+- [URLS](#URLS)
 
-## Code Examples
 
-This example shows how I structured my handlebars file for the homepage of the application.
 
-```hbs
-<body class="flex-column min-100-vh">
-  <nav class="navbar">
-    <ul>
-      <li class="li-inline nav-item"><a href="/">Homepage</a></li>
-      <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
-      {{#if logged_in}}
-        <li class="li-inline nav-item"><a
-            id="logout-link"
-            href="/"
-          >Logout</a></li>
-      {{else}}
-        <li class="li-inline nav-item"><a href="/login">Login</a></li>
-      {{/if}}
-    </ul>
-  </nav>
-  <header class="hero">
-    <h1 class="app-title"><a href="/">The Tech Blog</a></h1>
-  </header>
-  <main class="col-auto">
-    {{{body}}}
-  </main>
-  {{#if logged_in}}
-    <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+
+## User-Story
+
+```md
+AS A developer who writes about tech
+I WANT a CMS-style blog site
+SO THAT I can publish articles, blog posts, and my thoughts and opinions
 ```
 
-This is the route I used when a user clicks on a post on the homepage. This route takes the user to a page that displays the post, all comments that have been left on the post, and an input field for the user to leave their own comment.
+## Usage
 
-```js
-router.get("/post/:id", withAuth, async (req, res) => {
-  try {
-    const postData = await Post.findOne({
-      where: { id: req.params.id },
-      include: [
-        User,
-        {
-          model: Comment,
-          include: User,
-        },
-      ],
-    });
-    if (postData) {
-      const post = postData.get({ plain: true });
-      console.log(post);
-      res.render("single-post", {
-        layout: "main",
-        post,
-        logged_in: req.session.loggedIn,
-      });
-    } else {
-      res.status(400).end();
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+```md
+GIVEN a CMS-style blog site
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links for the homepage, the dashboard, and the option to log out
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+WHEN I click on the dashboard option in the navigation
+THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
+WHEN I click on the button to add a new blog post
+THEN I am prompted to enter both a title and contents for my blog post
+WHEN I click on the button to create a new blog post
+THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+WHEN I click on one of my existing posts in the dashboard
+THEN I am able to delete or update my post and taken back to an updated dashboard
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+WHEN I am idle on the site for more than a set time
+THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
 
-## Technologies Used
+## Installation
+- mysql
+- node.js
+- express-handlebars
+- sequelize
+- dotenv
+- bcrypt
+- express-session
+- connect-session-sequelize
+- Insomnia
 
-![JavaScript Badge](https://img.shields.io/badge/Language-JavaScript-yellow)
-![CSS Badge](https://img.shields.io/badge/Language-CSS-blue)
-![Handlebars Badge](https://img.shields.io/badge/Language-Handlebars-orange)
-![Mysql Badge](https://img.shields.io/badge/Database-MySql-informational)
-![Sequelize Badge](https://img.shields.io/badge/NPM-Sequelize-important)
-![Connect-session-sequelize](https://img.shields.io/badge/NPM-connect--session--sequelize-brightgreen)
-![Node.js Badge](https://img.shields.io/badge/Environment-Node.js-red)
-![Express Badge](https://img.shields.io/badge/NPM-Express.js-green)
-![Express-handlebars](https://img.shields.io/badge/NPM-express--handlebars-yellowgreen)
-![Express-session](https://img.shields.io/badge/NPM-express--session-ff69b4)
-![Dotenv Badge](https://img.shields.io/badge/NPM-dotenv-blueviolet)
-![bcrypt](https://img.shields.io/badge/NPM-bcrypt-9cf)
+## Screenshots-of-Deployment
+### Homepage screen, Heroku App
+![alt text](./Assets/heroku%20app%20screen/homepage.PNG "homepage")
 
-## Questions
+### Login and Logout screen, Heroku App
+![alt text](./Assets/heroku%20app%20screen/notetaker%20write.PNG "Login and Logout")
 
-If you have any questions regarding this project, please reach out to me via email at atmason90@gmail.com.
+### Profile, Heroku App
+![alt text](./Assets/heroku%20app%20screen/notetakerSaved.PNG "Profile")
 
-You can view my other projects on GitHub by visiting my profile. [atmason90](https://github.com/atmason90)
+### Post, Heroku App
+![alt text](./Assets/heroku%20app%20screen/delete%20function.PNG "Post")
 
-## License
 
-MIT License
 
-Copyright (c) 2022 Andrew Mason
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+## URLS
+### GitHub repository
+https://github.com/mattesanna017/Tech-Blog-W14
+### Heroku App 
+https://tech-blog-1422.herokuapp.com/

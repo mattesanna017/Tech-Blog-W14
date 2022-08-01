@@ -85,7 +85,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 ![alt text](./assets/profile-dashoboard.PNG "Profile")
 
 ### Make a  Post
-![alt text](./assets/createPost.PNG"Post")
+![alt text](./assets/createPost.PNG "Post")
 
 ### Make a Comment
 ![alt text](./assets/comment.PNG "Comment")
